@@ -1,0 +1,35 @@
+
+<div class="container w-100 mt-5">
+  <div class="row gy-3 w-100 align-items-center">
+    <div class=" col-lg-4 col-md-6 pt-3">
+    <img *ngIf="itemDetails.poster_path" [src]="'https://image.tmdb.org/t/p/w500/'+itemDetails.poster_path" class="w-100 py-3" alt="">
+  <img *ngIf="itemDetails.profile_path" [src]="'https://image.tmdb.org/t/p/w500/'+itemDetails.profile_path" class="w-100" alt="">
+    </div>
+    <div class="col-lg-8 col-md-6">
+      <h2 class="h4 mb-2">{{itemDetails.title}} {{itemDetails.name}}</h2>
+      <h2 class="h6 mb-2 text-warning" *ngIf="">release date: {{itemDetails.release_date}} {{itemDetails.first_air_date}}</h2>
+      <h3 *ngIf="itemDetails.vote_average"  class="h6 badge bg-info p-2 text-white my-2 mx-1">Rating: {{itemDetails.vote_average.toFixed(1)}}</h3>
+        <span *ngFor="let gener of itemDetails.genres" class="h6 badge bg-info p-2 text-white my-2 mx-1">{{gener.name}}</span>
+      <p *ngIf="itemDetails.overview" class="h6 text-muted">{{itemDetails.overview}}</p>
+      <p *ngIf="itemDetails.biography" class="h6 text-muted">{{itemDetails.biography}}</p>
+      <div *ngIf="itemDetails.production_companies">
+        Production by:
+        <div class="">
+          <span  *ngFor="let production of itemDetails.production_companies" class="h6 badge bg-danger p-2 text-white my-2 mx-1"> {{production.name}}</span>
+        </div>
+        <span *ngFor="let production of itemDetails.production_companies">
+          <img  *ngIf="production.logo_path" [src]="'https://image.tmdb.org/t/p/w500/'+production.logo_path" class="w-25 m-2 bg-white p-1 obj" alt="">
+        </span>
+      </div>
+    </div>
+  </div>
+  <h2 class="h1 my-3" *ngIf="mediaType!='person'">Similar: </h2>
+  <div class="row">
+    <div class="col-lg-2 col-md-3 col-6 position-relative" *ngFor="let item of itemsSimilar" >
+        <div (click)="getSimilar( mediaType , item.id)">
+          <app-movieitems [items]="item" [media]="mediaType"></app-movieitems>
+        </div>
+    </div>
+  </div>
+
+</div>

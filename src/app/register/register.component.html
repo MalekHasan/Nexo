@@ -1,0 +1,56 @@
+<div class="container d-flex justify-content-center align-items-center flex-wrap my-5">
+<div class="w-100">
+  <div class="w-50 mx-auto my-5">
+<form  [formGroup]="registerForm" (ngSubmit)="submitingRegisterForm(registerForm)" >
+  <label for="">first_name:</label>
+  <input type="text" formControlName="first_name"  class="form-control text-white bg-transparent">
+<div class="alert alert-danger" *ngIf="registerForm.get('first_name')?.errors && registerForm.get('first_name')?.touched">
+  <p class="" *ngIf="registerForm.get('first_name')?.getError('required')">first_name is already required</p>
+  <p class="" *ngIf="registerForm.get('first_name')?.getError('minlength')">minLenght should be at least 3 character</p>
+</div>
+
+
+  <label for="" >last_name:</label>
+  <input type="text" formControlName="last_name" class="form-control text-white bg-transparent">
+  <div class="alert alert-danger" *ngIf="registerForm.get('last_name')?.errors && registerForm.get('last_name')?.touched">
+    <p class="" *ngIf="registerForm.get('last_name')?.getError('required')">last_name is already required</p>
+    <p class="" *ngIf="registerForm.get('last_name')?.getError('minlength')">minLenght should be at least 3 character</p>
+  </div>
+
+
+  <label for="" >age:</label>
+  <input type="number" formControlName="age" class="form-control text-white bg-transparent">
+  <div class="alert alert-danger" *ngIf="registerForm.get('age')?.errors && registerForm.get('age')?.touched">
+    <p class="" *ngIf="registerForm.get('age')?.getError('required')">age is already required</p>
+    <p class="" *ngIf="registerForm.get('age')?.getError('min')">age should be at least 16 years old</p>
+    <p class="" *ngIf="registerForm.get('age')?.getError('max')">age should be at most 16 years old</p>
+  </div>
+
+
+  <label for="" >email:</label>
+  <input type="email" formControlName="email" class="form-control text-white bg-transparent">
+  <div class="alert alert-danger" *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+    <p class="" *ngIf="registerForm.get('email')?.getError('required')">email is already required</p>
+    <p class="" *ngIf="registerForm.get('email')?.getError('email')">emial format is not correct</p>
+  </div>
+
+
+  <label for="" >password:</label>
+  <input type="password" formControlName="password" class="form-control text-white bg-transparent">
+  <div class="alert alert-danger" *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+    <p class="" *ngIf="registerForm.get('password')?.getError('required')">password is already required</p>
+    <p class="" *ngIf="registerForm.get('password')?.getError('minLength')">minLenght password should be at least 3 character</p>
+  </div>
+
+
+  <button type="submit" class="btn btn-info mt-3 text-white" [disabled]="registerForm.invalid">
+    <span *ngIf="!isLoading">register</span>
+  <i class="fas fa-spinner fa-spin" *ngIf="isLoading"></i>
+</button>
+</form>
+
+  </div>
+</div>
+  <p class="text-center">Are You have an acount ? Please <a class=" text-decoration-underline" routerLink="/login">Sign in</a>.</p>
+
+</div>

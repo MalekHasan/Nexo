@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg bg-transparent navbar-dark shadow fixed-top start-0 end-0">
+  <div class="container-fluid">
+    <a class="navbar-brand " routerLink="home" routerLinkActive="active"><h1 class="h3 fw-bolder nav-logo">Nexo</h1></a>
+    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="isLogin" aria-current="page" routerLink="home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="isLogin" routerLink="movie" routerLinkActive="active">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="isLogin" routerLink="tv" routerLinkActive="active">Tv Shows</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="isLogin" routerLink="people" routerLinkActive="active">People</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="isLogin" routerLink="about" routerLinkActive="active">About</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 navInd">
+        <div class="" *ngIf="isLogin">
+          <form [formGroup]="searchForm" class="d-flex" role="search" (keyup)="searchInput(searchForm)" >
+            <input formControlName="searchInput" type="text" [(ngModel)]="seacrhDyn" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+            <ul class="list-group position-absolute top-75 "*ngIf="isLogin">
+              <a [routerLink]="['/itemdetails',itemSearch.media_type , itemSearch.id]"  *ngFor="let itemSearch of searchResult">
+                <li class="list-group-item" (click)="seacrhKey()" *ngIf="seacrhDyn">{{itemSearch.name}} {{itemSearch.title}}</li>
+              </a>
+            </ul>
+          </form>
+        </div>
+        <li class="nav-item dropdown" *ngIf="isLogin">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Settings
+          </a>
+          <ul class="dropdown-menu" >
+            <li><a class="dropdown-item" routerLink="settings">profile</a></li>
+            <li><a class="dropdown-item" routerLink="settings/privacy">privacy</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <a class="nav-link ms-2 text-dark" *ngIf="isLogin" (click)="logOut()">LogOut</a>
+          </ul>
+        </li>
+        <li class="nav-item d-flex align-items-center">
+          <a class="nav-link px-2 fab fa-facebook crsr-mine"  routerLinkActive="active"></a>
+          <a class="nav-link px-2 fab fa-linkedin crsr-mine"  routerLinkActive="active"></a>
+          <a class="nav-link px-2 fab fa-github crsr-mine"  routerLinkActive="active"></a>        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="!isLogin" routerLink="login" routerLinkActive="active">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " *ngIf="!isLogin" routerLink="register" routerLinkActive="active">Register</a>
+        </li>
+
+        <li class="nav-item">
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>

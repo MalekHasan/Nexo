@@ -1,0 +1,60 @@
+<header class="d-flex align-items-end ">
+<div class="container">
+  <h2 class="h1 fw-bold ">Our Latest Movies</h2>
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let movie of trendeingMovies">
+      <ng-template carouselSlide [id]="movie.id">
+        <a [routerLink]="['/itemdetails','movie',movie.id]">
+          <img [src]="'https://image.tmdb.org/t/p/w500/'+movie.poster_path" [alt]="movie.alt" [title]="movie.title" class="w-100">
+        </a>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div>
+</header>
+
+
+<div class="container">
+  <div class="row gy-4  my-5">
+    <div class="col-lg-4 col-md-6 d-flex align-items-center justify-content-center">
+        <div class="brdr w-100 py-3 position-relative">
+          <h2 class="h3 text-white ">
+            Trending <br />Movies <br />to watch now
+          </h2>
+          <p class="text-muted">most watched right now</p>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-3 col-6 position-relative" *ngFor="let movie of trendeingMovies">
+      <app-movieitems [items]="movie"></app-movieitems>
+    </div>
+  </div>
+
+  <div class="row gy-4 my-5">
+    <div class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center">
+        <div class="brdr  w-100 py-3 position-relative">
+          <h2 class="h3 text-white">
+            Trending <br />Tv <br />to watch now
+          </h2>
+          <p class="text-muted">most watched right now</p>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-3 col-6 position-relative" *ngFor="let tv of trendeingTv">
+      <app-movieitems [items]="tv"></app-movieitems>
+    </div>
+  </div>
+
+  <div class="row gy-4 my-5">
+    <div class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center">
+        <div class="brdr  w-100 py-3 position-relative">
+          <h2 class="h3 text-white">
+            Trending <br />People <br />to watch now
+          </h2>
+          <p class="text-muted">most watched right now</p>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-3 col-6 position-relative" *ngFor="let person of trendeingPeople">
+      <app-movieitems [items]="person"></app-movieitems>
+    </div>
+  </div>
+</div>

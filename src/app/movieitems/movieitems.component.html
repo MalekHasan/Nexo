@@ -1,0 +1,7 @@
+<a [routerLink]="['/itemdetails', items.media_type||media , items.id]">
+  <img *ngIf="items.poster_path" [src]="'https://image.tmdb.org/t/p/w500/'+items.poster_path" class="w-100" alt="">
+  <img *ngIf="items.profile_path" [src]="'https://image.tmdb.org/t/p/w500/'+items.profile_path" class="w-100" alt="">
+  <h2 *ngIf="items.title" class="h6 text-center">{{items.title}}</h2>
+  <h2 *ngIf="items.name" class="h6 text-center">{{items.name}}</h2>
+  <p *ngIf="items.vote_average" class="h6 text-center position-absolute top-0 end-0 bg-info p-2 text-white"><i class="fas fa-star text-warning"></i> {{items.vote_average.toFixed(1)}}</p>
+</a>

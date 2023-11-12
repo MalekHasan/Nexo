@@ -1,0 +1,32 @@
+<div class="container d-flex justify-content-center align-items-center flex-wrap">
+  <div class="col-12">
+    <div class="w-50 mx-auto my-5">
+  <form  [formGroup]="loginForm" (ngSubmit)="submitingLoginForm(loginForm)" >
+  <p class="alert alert-danger" *ngIf="err">{{err}}</p>
+    <label for="" >email:</label>
+    <input type="email" formControlName="email" class="form-control text-white mb-2 bg-transparent">
+    <div class="alert alert-danger" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+      <p class="m-0 " *ngIf="loginForm.get('email')?.getError('required')">emial is already required</p>
+      <p class="m-0" *ngIf="loginForm.get('email')?.getError('email')">emial format is not correct</p>
+    </div>
+
+
+    <label for="" >password:</label>
+    <input type="password" formControlName="password" class="form-control text-white mb-2 bg-transparent">
+    <div class="alert alert-danger" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+      <p class="m-0" *ngIf="loginForm.get('password')?.getError('required')">password is already required</p>
+      <p class="m-0" *ngIf="loginForm.get('password')?.getError('minlength')">minLenght password should be at least 3 character</p>
+    </div>
+
+
+    <button type="submit" class="btn btn-info mt-3 text-white" [disabled]="loginForm.invalid">
+      <span *ngIf="!isLoading">login</span>
+      <i class="fas fa-spinner fa-spin" *ngIf="isLoading"></i>
+
+    </button>
+  </form>
+
+    </div>
+  </div>
+  <p class="text-center">If you don't have an acount Please <a class=" text-decoration-underline" routerLink="/register">Sign Up</a>.</p>
+</div>

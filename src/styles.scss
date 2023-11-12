@@ -1,1 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
+:root{
+  --bg-main:#131722;
+  --ligt-Bg-Color:#24baef;
+  --border-color:#a8a8a83d;
+}
+*{
+  font-family: 'Montserrat Alternates', sans-serif;
+transition: all 0.2s linear;}
+body{
+  background-color: #131722;
+  color: white;
+}
+a,.crsr-mine{
+  cursor: pointer;
+}
+.nav-logo{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.brdr
+{
+  position: relative;
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25%;
+    border-top:2px solid var(--border-color) ;
+  }
+  &::after{
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 75%;
+    border-bottom:2px solid var(--border-color) ;
+  }
+}
+a{
+  color: #fff;
+  text-decoration: none;
+  &:hover{
+    color: #24baef;
+  }
+
+}
+.obj{
+  object-fit: cover;
+}
+header{
+  background-image: url('assets/rows-red-seats-theater.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 77.5vh;
+  width: 100%;
+}
+.top-75
+{
+  top:75%;
+}
+.navInd{
+  z-index: 100;
+}
+.text-mine{
+  color: #000 !important;
+}
+.fixed-top{
+background-color: rgba(19, 23, 34,0.9) !important;
+
+}

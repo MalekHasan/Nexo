@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <div class="row ">
+    <div class="col-lg-2 col-md-3 col-6 position-relative mt-5" *ngFor="let person of people">
+      <app-movieitems [items]="person" [media]="'person'"></app-movieitems>
+    </div>
+
+  </div>
+  <div class="float-end mb-4">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" (click)="prev()">Previous</a></li>
+        <li class="page-item"><a class="page-link">{{pageIndex}}</a></li>
+        <li class="page-item"><a class="page-link" (click)="next()">Next</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
